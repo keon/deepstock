@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/ubuntu/cnn-text-classification-tf/runs/1481506269/checkpoints/model-6000"
+all_model_checkpoint_paths: "/home/ubuntu/cnn-text-classification-tf/runs/1481506269/checkpoints/model-6000"
