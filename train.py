@@ -1,21 +1,19 @@
-#! /usr/bin/env python
-
-import tensorflow as tf
-import numpy as np
 import os
 import time
 import datetime
+import tensorflow as tf
+from tensorflow.contrib import learn
+import numpy as np
 import data_helpers
 from text_cnn import TextCNN
-from tensorflow.contrib import learn
 
 # Parameters
 # ==================================================
 
 # Data loading params
 tf.flags.DEFINE_float("dev_sample_percentage", .1, "Percentage of the training data to use for validation")
-tf.flags.DEFINE_string("positive_data_file", "./data/daily-stock/daily.pos", "Data source for the positive data.")
-tf.flags.DEFINE_string("negative_data_file", "./data/daily-stock/daily.neg", "Data source for the positive data.")
+tf.flags.DEFINE_string("positive_data_file", "./data/rt-polarity/rt-polarity.pos", "Data source for the positive data.")
+tf.flags.DEFINE_string("negative_data_file", "./data/rt-polarity/rt-polarity.neg", "Data source for the positive data.")
 
 # Model Hyperparameters
 tf.flags.DEFINE_integer("embedding_dim", 128, "Dimensionality of character embedding (default: 128)")
@@ -26,7 +24,7 @@ tf.flags.DEFINE_float("l2_reg_lambda", 0.0, "L2 regularizaion lambda (default: 0
 
 # Training parameters
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
-tf.flags.DEFINE_integer("num_epochs", 200, "Number of training epochs (default: 200)")
+tf.flags.DEFINE_integer("num_epochs", 500, "Number of training epochs (default: 500)")
 tf.flags.DEFINE_integer("evaluate_every", 100, "Evaluate model on dev set after this many steps (default: 100)")
 tf.flags.DEFINE_integer("checkpoint_every", 100, "Save model after this many steps (default: 100)")
 # Misc Parameters
