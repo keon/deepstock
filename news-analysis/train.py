@@ -6,6 +6,7 @@ from tensorflow.contrib import learn
 import numpy as np
 import data_helpers
 from text_cnn import TextCNN
+from sklearn import cross-validation
 
 # Parameters
 # ==================================================
@@ -59,12 +60,16 @@ y_shuffled = y[shuffle_indices]
 
 # Split train/test set
 # TODO: This is very crude, should use cross-validation
+
+#cross_validation
+
+x_train, x_dev, y_train, y_dev = sklearn.cross_validation.train_test_split(x_shuffled, y_shuffled, test_size=FLAGS.dev_sample_percentage)
+
 dev_sample_index = -1 * int(FLAGS.dev_sample_percentage * float(len(y)))
-x_train, x_dev = x_shuffled[:dev_sample_index], x_shuffled[dev_sample_index:]
-y_train, y_dev = y_shuffled[:dev_sample_index], y_shuffled[dev_sample_index:]
+#x_train, x_dev = x_shuffled[:dev_sample_index], x_shuffled[dev_sample_index:]
+#y_train, y_dev = y_shuffled[:dev_sample_index], y_shuffled[dev_sample_index:]
 print("Vocabulary Size: {:d}".format(len(vocab_processor.vocabulary_)))
 print("Train/Dev split: {:d}/{:d}".format(len(y_train), len(y_dev)))
-
 sequence_length=x_train.shape[1]
 num_classes=y_train.shape[1]
 print("<SEQUENCE_LENGTH>", sequence_length)
